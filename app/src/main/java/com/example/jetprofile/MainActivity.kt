@@ -10,6 +10,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -118,7 +120,13 @@ class MainActivity : ComponentActivity() {
                                 .background(Color.LightGray.copy(alpha = 0.3f))
                                 .padding(horizontal = 10.dp, vertical = 20.dp)
                         ) {
-                            // TODO: EmailのUI部分をComposableにして使い回す
+                            Label(
+                                icon = Icons.Default.Favorite,
+                                text = "趣味:　プログラミング",
+                                color = Color.Gray
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Label(icon = Icons.Default.LocationOn, text = "居住地: 大阪府xxx", color = Color.Gray)
                         }
                     }
 
