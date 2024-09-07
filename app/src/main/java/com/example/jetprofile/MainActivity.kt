@@ -10,10 +10,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -84,11 +86,7 @@ class MainActivity : ComponentActivity() {
                             Spacer(modifier = Modifier.height(20.dp))
 
                             // Email
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Icon(imageVector = Icons.Default.Email, contentDescription = "emial")
-                                Spacer(modifier = Modifier.width(10.dp))
-                                Text(text = "Email", fontSize = 14.sp, fontWeight = FontWeight.Bold)
-                            }
+                            Label(icon = Icons.Default.Email, text = "Email")
                             Spacer(modifier = Modifier.height(10.dp))
                             Text(text = "example@example.com", fontSize = 16.sp)
                             Spacer(modifier = Modifier.height(5.dp))
@@ -130,4 +128,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Composable
+fun Label(icon: ImageVector, text: String, color: Color = MaterialTheme.colors.onBackground) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Icon(imageVector = icon, contentDescription = null)
+        Spacer(modifier = Modifier.width(10.dp))
+        Text(text = text, color = color, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+    }
+}
 
