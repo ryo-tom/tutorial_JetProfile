@@ -6,7 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -43,7 +45,9 @@ fun MainContent() {
     // カラムで縦方向にUIを並べる
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(20.dp) // カラム全体に20dpのpadding
+        modifier = Modifier
+            .padding(20.dp) // カラム全体に20dpのpadding
+            .verticalScroll(rememberScrollState()) // 画面スクロール可能にする
     ) {
         // プロフィール画像
         Image(
