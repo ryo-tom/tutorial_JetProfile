@@ -1,13 +1,14 @@
 package com.example.jetprofile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -75,19 +76,26 @@ fun MainContent() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        // mutableStateOfを使って、状態が変更された際にUI（Composable）が自動的に再描画されるようにする
+        // 通常の変数宣言だと、onClickで値が変更されてもUIが再描画されないため反応しない
+        // rememberを使うことで、Composeがリコンポーズされても変数が保持され、再初期化されるのを防ぐ
+        var isShowDetail by remember { mutableStateOf(false) }
+
         // 詳細表示ボタン
         // 文法: Buttonの最後の引数はcontentというラムダ式であり、
         // 最後の引数がラムダ式の時kotlinでは、かっこの外にかける
         Button(
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFF85F6A)),
-            onClick = { /*TODO*/ },
+            onClick = { isShowDetail = !isShowDetail },
         ) {
             Text(text = "詳細を表示", color = Color.White)
         }
         Spacer(modifier = Modifier.height(20.dp))
 
-        DetailSection()
+        if (isShowDetail) {
+            DetailSection()
+        }
     }
 }
 
