@@ -4,25 +4,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetprofile.components.Label
+import com.example.jetprofile.components.CompanySection
+import com.example.jetprofile.components.DetailSection
 import com.example.jetprofile.ui.theme.JetProfileTheme
 
 class MainActivity : ComponentActivity() {
@@ -67,38 +61,8 @@ class MainActivity : ComponentActivity() {
                         )
                         Spacer(modifier = Modifier.height(20.dp))
 
-                        Column(
-                            horizontalAlignment = Alignment.Start,
-                            modifier = Modifier.fillMaxWidth(), // 外側のColumnの幅と同じにしたいため
-                        ) {
-                            // 会社名
-                            Text(
-                                text = "Rdx Company",
-                                fontSize = 26.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
-                            Spacer(modifier = Modifier.height(10.dp))
-                            
-                            // 部署・グループ名
-                            Text(
-                                text = "DXカンパニー テクノロジーグループ",
-                                color = Color.Gray,
-                                fontSize = 16.sp
-                            )
+                        CompanySection()
 
-                            Spacer(modifier = Modifier.height(20.dp))
-
-                            // Email
-                            Label(icon = Icons.Default.Email, text = "Email")
-                            Spacer(modifier = Modifier.height(10.dp))
-                            Text(text = "example@example.com", fontSize = 16.sp)
-                            Spacer(modifier = Modifier.height(5.dp))
-
-                            Divider(
-                                modifier = Modifier.clip(RoundedCornerShape(1000.dp)),
-                                thickness = 2.dp
-                            )
-                        }
                         Spacer(modifier = Modifier.height(20.dp))
                         
                         // 詳細表示ボタン
@@ -113,22 +77,7 @@ class MainActivity : ComponentActivity() {
                         }
                         Spacer(modifier = Modifier.height(20.dp))
 
-                        // 趣味 & 居住地セクション
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(RoundedCornerShape(10.dp))
-                                .background(Color.LightGray.copy(alpha = 0.3f))
-                                .padding(horizontal = 10.dp, vertical = 20.dp)
-                        ) {
-                            Label(
-                                icon = Icons.Default.Favorite,
-                                text = "趣味:　プログラミング",
-                                color = Color.Gray
-                            )
-                            Spacer(modifier = Modifier.height(10.dp))
-                            Label(icon = Icons.Default.LocationOn, text = "居住地: 大阪府xxx", color = Color.Gray)
-                        }
+                        DetailSection()
                     }
 
                 }
