@@ -22,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetprofile.components.Label
 import com.example.jetprofile.ui.theme.JetProfileTheme
 
 class MainActivity : ComponentActivity() {
@@ -136,12 +137,4 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Label(icon: ImageVector, text: String, color: Color = MaterialTheme.colors.onBackground) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Icon(imageVector = icon, contentDescription = null)
-        Spacer(modifier = Modifier.width(10.dp))
-        Text(text = text, color = color, fontSize = 14.sp, fontWeight = FontWeight.Bold)
-    }
-}
 
